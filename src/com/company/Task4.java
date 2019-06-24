@@ -11,9 +11,13 @@ public class Task4 {
             return product;
         }
         else {
-            if (first == this.first && second < this.second - 1){
-                first = this.first - (this.first - second)/2;
-                return getPalindrome(first, first);
+            if (first == this.first) {
+                if ((this.second - second) % 2 == 1) {
+                    return getPalindrome(this.first - (this.second - second)/2 + 1, this.second - (this.second - second + 1)/2 + 1);
+                } else {
+//                    first = this.first - (this.first - second) / 2;
+                    return getPalindrome(this.first - (this.second - second)/2 - 1, this.second - (this.second - second)/2 - 1);
+                }
             }
             return getPalindrome(++first, --second);
         }
