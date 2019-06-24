@@ -1,6 +1,6 @@
 package com.company;
 
-public class Task4 {
+public class Task4 implements EulerTask{
     private int first = 999;
     private int second = 999;
 
@@ -23,6 +23,7 @@ public class Task4 {
         }
     }
 
+    @Override
     public int getAnswer(){
         return getPalindrome(first-1, second-1);
     }
