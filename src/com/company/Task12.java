@@ -70,4 +70,36 @@ public class Task12 implements EulerTask {
             }
         }
     }
+
+/*    public int anotherVariant(){
+        int n = 3;      //start with a prime
+        int Dn = 2;     //number of divisors for any prime
+        int cnt = 0;    //to insure the while loop is entered
+        int n1, Dn1, i, exponent;
+
+        sieveErFill(firstArr);
+        while (cnt < factorsQuantity){
+            n = n + 1;
+            n1 = n;
+            if (n1 % 2 == 0) n1 = n1 / 2;
+            Dn1 = 1;
+            for (int z = 0; z < firstArr.length; z++) {
+                buff = Task7.getNumberFromIdx(z);
+                if (buff * buff > n1){
+                    Dn1 = 2 * Dn1;
+                    break;
+                }
+                exponent = 1;
+                while (n1 % buff == 0){
+                    exponent++;
+                    n1 = n1 / (int)buff;
+                }
+                if (exponent > 1) Dn1 *= exponent;
+                if (n1 == 1) break;
+            }
+            cnt = Dn * Dn1;
+            Dn = Dn1;
+        }
+        return n * (n-1) / 2;
+    }*/
 }
