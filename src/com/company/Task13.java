@@ -1,9 +1,11 @@
 package com.company;
 
+import java.math.BigInteger;
+
 public class Task13 {
 
     private String data =
-                    "37107287533902102798797998220837590246510135740250\n" +
+            "37107287533902102798797998220837590246510135740250\n" +
                     "46376937677490009712648124896970078050417018260538\n" +
                     "74324986199524741059474233309513058123726617309629\n" +
                     "91942213363574161572522430563301811072406154908250\n" +
@@ -106,21 +108,31 @@ public class Task13 {
 
     private String[] chisla = data.split("\n");
 
-    public long getAnswer(){
-        int currentNum = 0;
+    public long getAnswer() {
+        //Массив сумм рязрядов числа
         int[] rankSum = new int[50];
+        //Сумма чисел будет храниться в строке
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i<50; i++){
+        for (int i = 0; i < rankSum.length; i++) {
             rankSum[i] = 0;
-            for (String number: chisla){
-                rankSum[i]+=Integer.parseInt(number.substring(i, i+1));
+            for (String number : chisla) {
+                rankSum[i] += Integer.parseInt(number.substring(i, i + 1));
             }
         }
-        for (int i = rankSum.length-1; i>=0; i--){
-            currentNum += rankSum[i] * 10; // последний ноль в числе - незначащий
-            sb.append(currentNum%10);
+        int currentNum = rankSum[rankSum.length - 1];
+        for (int i = rankSum.length - 2; i >= 0; i--) {
+            sb.append(currentNum % 10);
+            currentNum += (rankSum[i] * 10);
+            currentNum /= 10;
         }
-        System.out.println(sb.toString());
-        return chisla.length;
+        return Long.parseLong(sb.reverse().insert(0, currentNum).subSequence(0, 10).toString());
+    }
+
+    public BigInteger getAnswerAlternative() {
+        BigInteger bigInteger = new BigInteger("0");
+        for (String number : chisla) {
+            bigInteger = bigInteger.add(new BigInteger(number));
+        }
+        return bigInteger;
     }
 }
