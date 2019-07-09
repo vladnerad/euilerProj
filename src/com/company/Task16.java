@@ -2,8 +2,9 @@ package com.company;
 
 import java.math.BigInteger;
 
-public class Task16 {
+public class Task16 implements EulerTask{
 
+    @Override
     public int getAnswer() {
         BigInteger bigInteger = new BigInteger("2");
         String answer = bigInteger.pow(1000).toString();
