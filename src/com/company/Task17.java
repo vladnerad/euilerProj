@@ -113,7 +113,6 @@ public class Task17 implements EulerTask {
 
     @Override
     public int getAnswer() {
-        System.out.println(getNumberLetters(1000));
         for (int i = 1; i <= 1000; i++) {
             result += getNumberLetters(i);
         }
@@ -128,7 +127,6 @@ public class Task17 implements EulerTask {
         } else if (number < 1000) {
             if (number % 100 == 0) return hundreds.get(number / 100).length();
             else {
-//                result+=and.length();
                 return getNumberLetters(number % 100) + and.length() + hundreds.get(number / 100).length();
             }
         } else return thousand.length();
