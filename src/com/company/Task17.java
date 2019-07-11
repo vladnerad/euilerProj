@@ -2,7 +2,7 @@ package com.company;
 
 import java.util.HashMap;
 
-public class Task17 implements EulerTask{
+public class Task17 implements EulerTask {
     private String
             one = "one",
             two = "two",
@@ -25,21 +25,21 @@ public class Task17 implements EulerTask{
             nineteen = "nineteen",
             twenty = "twenty",
             thirty = "thirty",
-            fourty = "fourty",
+            forty = "forty",
             fifty = "fifty",
             sixty = "sixty",
             seventy = "seventy",
             eighty = "eighty",
             ninety = "ninety",
             hundred = "hundred",
-            thousand = "one thousand",
+            thousand = "onethousand",
             and = "and";
 
     private HashMap<Integer, String> units;
     private HashMap<Integer, String> tens;
     private HashMap<Integer, String> hundreds;
 
-    int result = 0;
+    private int result = 0;
 
     public Task17() {
         units = new HashMap<>();
@@ -67,7 +67,7 @@ public class Task17 implements EulerTask{
         tens = new HashMap<>();
         tens.put(2, twenty);
         tens.put(3, thirty);
-        tens.put(4, fourty);
+        tens.put(4, forty);
         tens.put(5, fifty);
         tens.put(6, sixty);
         tens.put(7, seventy);
@@ -75,15 +75,15 @@ public class Task17 implements EulerTask{
         tens.put(9, ninety);
 
         hundreds = new HashMap<>();
-        hundreds.put(1, one+hundred);
-        hundreds.put(2, two+hundred);
-        hundreds.put(3, three+hundred);
-        hundreds.put(4, four+hundred);
-        hundreds.put(5, five+hundred);
-        hundreds.put(6, six+hundred);
-        hundreds.put(7, seven+hundred);
-        hundreds.put(8, eight+hundred);
-        hundreds.put(9, nine+hundred);
+        hundreds.put(1, one + hundred);
+        hundreds.put(2, two + hundred);
+        hundreds.put(3, three + hundred);
+        hundreds.put(4, four + hundred);
+        hundreds.put(5, five + hundred);
+        hundreds.put(6, six + hundred);
+        hundreds.put(7, seven + hundred);
+        hundreds.put(8, eight + hundred);
+        hundreds.put(9, nine + hundred);
     }
 
 //    @Override
@@ -113,25 +113,24 @@ public class Task17 implements EulerTask{
 
     @Override
     public int getAnswer() {
-        for(int i = 1; i<=1000; i++){
-            getNumberLetters(i);
+        System.out.println(getNumberLetters(1000));
+        for (int i = 1; i <= 1000; i++) {
+            result += getNumberLetters(i);
         }
         return result;
     }
 
-    private void getNumberLetters(int number){
-        if (number<20) result+=units.get(number).length();
-        else if (number < 100){
-            if (number%10==0) result+=tens.get(number/10).length();
-            else getNumberLetters(number%10);
-        }
-        else if (number < 1000){
-            if (number%100==0) result+=hundreds.get(number/100).length();
-            else{
-                result+=and.length();
-                getNumberLetters(number%100);
+    private int getNumberLetters(int number) {
+        if (number < 20) return units.get(number).length();
+        else if (number < 100) {
+            if (number % 10 == 0) return tens.get(number / 10).length();
+            else return getNumberLetters(number % 10) + tens.get(number / 10).length();
+        } else if (number < 1000) {
+            if (number % 100 == 0) return hundreds.get(number / 100).length();
+            else {
+//                result+=and.length();
+                return getNumberLetters(number % 100) + and.length() + hundreds.get(number / 100).length();
             }
-        }
-        else result+=thousand.length();
+        } else return thousand.length();
     }
 }
