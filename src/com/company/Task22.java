@@ -1,14 +1,10 @@
 package com.company;
 
-import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Stream;
 
 public class Task22 {
     //    private File namesFile = new File("/home/vladik/java/javaProj/sources/euilerProj/src/com/company/inputs/names.txt");
