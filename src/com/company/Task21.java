@@ -23,7 +23,8 @@ public class Task21 implements EulerTask {
         return result;
     }
 
-    private int findDivSum(int number) {
+    //Метод находит сумму делителей числа
+    public static int findDivSum(int number) {
         int result = 0;
         if (number < 1) return 0;
         if (number == 1) return 1;
