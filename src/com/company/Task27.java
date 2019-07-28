@@ -2,10 +2,11 @@ package com.company;
 
 import java.util.Arrays;
 
-public class Task27 {
+public class Task27 implements EulerTask{
 
     private boolean[] firstArr = new boolean[10000];
 
+    @Override
     public int getAnswer() {
         Arrays.fill(firstArr, true);
         for (int i = 0; i < firstArr.length; i++) {
