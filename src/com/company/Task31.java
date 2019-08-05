@@ -1,23 +1,22 @@
 package com.company;
 
-import java.util.Arrays;
-
 public class Task31 implements EulerTask {
 
-    private int[][] arr = new int[201][201];
-
-    public Task31() {
-        for (int[] ints : arr) {
-            Arrays.fill(ints, -1);
-        }
-    }
+    private int[] arr = new int[201];
+    private int[] coins = {1, 2, 5, 10, 20, 50, 100, 200};
 
     @Override
     public int getAnswer() {
-        return dec(1, 1);
+        arr[0] = 1;
+        for (int i = 0; i < coins.length; i++) {
+            for (int j = coins[i]; j < arr.length; j++) {
+                arr[j] += arr[j - coins[i]];
+            }
+        }
+        return arr[arr.length - 1];
     }
-
-    // Рекурсивная фенкция разложения на слагаемые
+/*
+    // Рекурсивная функция разложения на слагаемые
     private int dec(int n, int k) {
         if (n >= 0 && k >= 0 && arr[n][k] > 0) return arr[n][k];
         if (n < 0) return 0;
@@ -25,4 +24,5 @@ public class Task31 implements EulerTask {
         arr[n][k] = dec(n, k - 1) + dec(n - k, k);
         return arr[n][k];
     }
+*/
 }
