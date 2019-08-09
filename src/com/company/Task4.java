@@ -28,7 +28,7 @@ public class Task4 implements EulerTask{
         return getPalindrome(first-1, second-1);
     }
 
-    public boolean isPalindrome(int number){
+    public static boolean isPalindrome(int number){
         String str = String.valueOf(number);
         StringBuilder sb = new StringBuilder();
         if (str.length()%2==0){
