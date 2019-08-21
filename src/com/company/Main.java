@@ -1,11 +1,14 @@
 package com.company;
 
+import com.company.fifthten.Task42;
+import com.company.fifthten.Task43;
+
 public class Main {
 
     public static void main(String[] args) {
         // write your code here
         long startTime = System.currentTimeMillis();
-        System.out.println(new Task42().getAnswer());
+        System.out.println(new Task43().getAnswer());
         System.out.println("It takes: " + (System.currentTimeMillis() - startTime) + " ms.");
     }
 }
