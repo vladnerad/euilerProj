@@ -40,27 +40,36 @@ public class Task50 implements EulerTask {
     @Override
     public int getAnswer() {
         fillPrimes();
-        int z = 0;
-        int dano = 1000;
+        int result = 0;
+        int count1;
+        int maxCount = 0;
+        int dano = 1000000;
         for (int i = dano; i > 0; i--) {
-            int buff = 0;
-            int count = 0;
-                for (int j = 0; buff < i; j++){
-                    if (primes[j]){
-                        buff+=getNumberFromIdx(j);
-                        count++;
+            count1 = 1;
+            if (i % 2 != 0 && (primes[getIdx(i)])) {
+                int buff = 2;
+                int count2 = 0;
+                for (int j = 0; buff < i; j++) {
+                    if (primes[j]) {
+                        buff += getNumberFromIdx(j);
+                        count1++;
                     }
                 }
-//            System.out.println(buff);
-//            System.out.println(count);
-            if (buff < dano && buff % 2 != 0 && (primes[getIdx(buff)] || primes[getIdx(buff+2)])){
-                if (primes[getIdx(buff)]) z = buff;
-                else if (primes[getIdx(buff+2)]) z = buff+2;
-                else z = -1;
-                break;
+                while (buff > i) {
+                    count1--;
+                    if (count2 == 0) {
+                        buff -= 2;
+                    } else {
+                        buff -= getNumberFromIdx(count2 - 1);
+                    }
+                    count2++;
+                }
+                if (buff == i && count1 > maxCount) {
+                    maxCount = count1;
+                    result = buff;
+                }
             }
         }
-        System.out.println(z);
-        return 0;
+        return result;
     }
 }
