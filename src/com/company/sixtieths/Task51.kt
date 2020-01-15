@@ -1,5 +1,5 @@
 //@file:JvmName("Test")
-package com.company.sixteen
+package com.company.sixtieths
 
 fun getAnswer(): Int {
     for (i in 56997..Int.MAX_VALUE step 2)

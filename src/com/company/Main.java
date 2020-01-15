@@ -1,6 +1,6 @@
 package com.company;
 
-import com.company.sixteen.Task53;
+import com.company.sixtieths.Task53;
 
 public class Main {
 

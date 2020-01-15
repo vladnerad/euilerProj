@@ -1,4 +1,4 @@
-package com.company.sixteen;
+package com.company.sixtieths;
 
 import com.company.EulerTask;
 
