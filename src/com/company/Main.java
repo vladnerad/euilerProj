@@ -1,6 +1,6 @@
 package com.company;
 
-import com.company.sixtieths.Task54;
+import com.company.sixtieths.Task55;
 
 public class Main {
 
@@ -8,7 +8,7 @@ public class Main {
         // write your code here
         long startTime = System.currentTimeMillis();
 //        System.out.println(com.company.sixteen.Task51Kt.isPrime(20));
-        System.out.println(new Task54().getAnswer());
+        System.out.println(new Task55().getAnswer());
         System.out.println("It takes: " + (System.currentTimeMillis() - startTime) + " ms.");
     }
 }

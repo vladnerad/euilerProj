@@ -35,6 +35,11 @@ public class Task54 implements EulerTask {
 
     @Override
     public int getAnswer() {
+        return getHardAnswer();
+//        return getSimpleAnswer();
+    }
+
+    private int getHardAnswer() {
         int result = 0;
         try {
             FileReader fileReader = new FileReader("C:\\Users\\vpriselkov\\IdeaProjects\\euilerProj\\src\\com\\company\\inputs\\p054_poker.txt");
@@ -267,5 +272,47 @@ public class Task54 implements EulerTask {
             System.exit(0);
             return 0;
         }
+    }
+    /////////////////////////////////////////////////////////////////////////////////
+    private int getSimpleAnswer(){
+        int result = 0;
+        try {
+            FileReader fileReader = new FileReader("C:\\Users\\vpriselkov\\IdeaProjects\\euilerProj\\src\\com\\company\\inputs\\p054_poker.txt");
+            BufferedReader br = new BufferedReader(fileReader);
+            String line;
+            while ((line = br.readLine()) != null){
+                if (isPlayer1Wins_2(line)) result++;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    private boolean isPlayer1Wins_2(String line) {
+        String[] player = new String[2];
+        player[0] = line.substring(0, 14);
+        player[1] = line.substring(15);
+        if (getScore(player[0]) > getScore(player[1])) return true;
+        else if ((getScore(player[0]) == getScore(player[1]) && getScore(player[0]) == 0)){
+            return getHighCard(player[0]) > getHighCard(player[1]);
+        }
+        else {
+            System.out.println("else");
+            return false;
+        }
+    }
+
+    private int getScore(String player){
+        if (isOnePair(player)) return 1;
+        if (isTwoPairs(player)) return 2;
+        if (isThreeOfAKind(player)) return 3;
+        if (isStraight(player)) return 4;
+        if (isFlush(player)) return 5;
+        if (isFullHouse(player)) return 6;
+        if (isFourOfAKind(player)) return 7;
+        if (isStraightFlush(player)) return 8;
+        if (isRoyalFlush(player)) return 9;
+        return 0;
     }
 }
